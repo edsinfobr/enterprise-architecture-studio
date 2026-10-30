@@ -83,6 +83,16 @@ A pasta [`case-arquiteto-banco/`](./case-arquiteto-banco) contém um case comple
 
 Para abrir: `npm run dev` → barra superior → **Importar** → selecione cada `*.eas.json`.
 
+Prints das arquiteturas (em `case-arquiteto-banco/images/`):
+
+| Visão (TOGAF Fase A) | Arquitetura Alvo (Microservices · C4) |
+|---|---|
+| ![Visão de Arquitetura](./case-arquiteto-banco/images/01-visao-de-arquitetura-togaf-fase-a.svg) | ![Arquitetura Alvo](./case-arquiteto-banco/images/06-arquitetura-alvo-to-be-microservices-c4.svg) |
+
+| Subdomínios (DDD) | Value Stream |
+|---|---|
+| ![Subdomínios DDD](./case-arquiteto-banco/images/02-mapa-de-problemas-de-negocio-subdominios-ddd.svg) | ![Value Stream](./case-arquiteto-banco/images/05-value-stream-realizar-um-pagamento.svg) |
+
 Os diagramas são regeneráveis com:
 
 ```bash
