@@ -1,0 +1,11 @@
+# Normaliza quebras de linha: o repositório guarda LF; o checkout respeita o SO.
+* text=auto eol=lf
+
+# Arquivos binários não devem sofrer normalização.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.ico binary
