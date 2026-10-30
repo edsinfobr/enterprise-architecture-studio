@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDiagram } from "./hooks/useDiagram";
+import { useTheme } from "./hooks/useTheme";
 import type { Diagram } from "./types";
 import { Navbar } from "./components/Navbar";
 import { Palette } from "./components/Palette";
@@ -16,15 +17,9 @@ export default function App() {
 
   const [library, setLibrary] = useState<Diagram[]>(() => loadDiagrams());
   const [showLibrary, setShowLibrary] = useState(false);
-  const [dark, setDark] = useState(
-    () =>
-      window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false
-  );
+  const { mode: themeMode, setMode: setThemeMode, cycleMode, isDark } =
+    useTheme();
   const [toast, setToast] = useState<string | null>(null);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
 
   const flash = useCallback((msg: string) => {
     setToast(msg);
@@ -91,7 +86,7 @@ export default function App() {
       if (!el) return;
       const opts = {
         fileName: ctrl.diagram.name,
-        background: dark ? "#0f172a" : "#ffffff",
+        background: isDark ? "#0f172a" : "#ffffff",
       };
       try {
         if (fmt === "png") await exportPng(el, opts);
@@ -101,7 +96,7 @@ export default function App() {
         flash("Falha ao exportar");
       }
     },
-    [ctrl.diagram.name, dark, flash]
+    [ctrl.diagram.name, isDark, flash]
   );
 
   // ---- Keyboard shortcuts ----
@@ -138,8 +133,10 @@ export default function App() {
         onImport={handleImportClick}
         onExportJson={() => downloadJson(ctrl.diagram)}
         onExport={handleExport}
-        dark={dark}
-        onToggleDark={() => setDark((d) => !d)}
+        themeMode={themeMode}
+        isDark={isDark}
+        onCycleTheme={cycleMode}
+        onSetThemeMode={setThemeMode}
       />
 
       <div className="flex min-h-0 flex-1">

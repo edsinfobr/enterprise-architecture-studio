@@ -1,5 +1,7 @@
 import type { DiagramController } from "../hooks/useDiagram";
+import type { ThemeMode } from "../hooks/useTheme";
 import { Icon } from "./Icon";
+import { ThemeControl } from "./ThemeControl";
 
 interface Props {
   ctrl: DiagramController;
@@ -8,8 +10,10 @@ interface Props {
   onImport: () => void;
   onExportJson: () => void;
   onExport: (fmt: "png" | "svg" | "pdf") => void;
-  dark: boolean;
-  onToggleDark: () => void;
+  themeMode: ThemeMode;
+  isDark: boolean;
+  onCycleTheme: () => void;
+  onSetThemeMode: (mode: ThemeMode) => void;
 }
 
 export function Navbar({
@@ -19,8 +23,10 @@ export function Navbar({
   onImport,
   onExportJson,
   onExport,
-  dark,
-  onToggleDark,
+  themeMode,
+  isDark,
+  onCycleTheme,
+  onSetThemeMode,
 }: Props) {
   const iconBtn =
     "flex h-9 w-9 items-center justify-center rounded-md text-slate-600 hover:bg-slate-100 disabled:opacity-40 dark:text-slate-300 dark:hover:bg-slate-700";
@@ -99,9 +105,12 @@ export function Navbar({
         </button>
       </div>
 
-      <button className={iconBtn} onClick={onToggleDark} title="Alternar tema">
-        <Icon name={dark ? "Sun" : "Moon"} size={18} />
-      </button>
+      <ThemeControl
+        mode={themeMode}
+        isDark={isDark}
+        onCycle={onCycleTheme}
+        onSelect={onSetThemeMode}
+      />
     </header>
   );
 }

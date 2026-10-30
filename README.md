@@ -21,7 +21,7 @@ Aplicação web para **desenho de arquitetura corporativa** com suporte a **C4 M
 - **Carimbo de identificação** — projeto, autor, papel e data, ativável sobre o canvas.
 - **Persistência local** — biblioteca de diagramas no `localStorage` + import/export JSON.
 - **Exportação** — PNG (2x), SVG e PDF (A4, ajuste automático).
-- **Tema claro/escuro** — segue a preferência do sistema, com alternância manual.
+- **Tema claro / escuro / automático** — três modos explícitos no menu de tema; o modo **Automático** segue a preferência do sistema operacional em tempo real e a escolha é persistida.
 - **Atalhos** — `Ctrl+Z`/`Ctrl+Y` (desfazer/refazer), `Ctrl+S` (salvar), `Delete` (excluir seleção).
 
 ## 🧱 Stack
