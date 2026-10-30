@@ -49,12 +49,10 @@ npm run lint     # verificação de tipos (tsc --noEmit)
 
 ```
 enterprise-architecture-studio/
-├── case-arquiteto-banco/   # Estudo de caso resolvido (ver abaixo)
-├── scripts/                # Geradores utilitários (Node ESM)
 ├── src/
-│   ├── components/         # Navbar, Palette, Canvas, Inspector, NodeShape, EdgeShape, LibraryModal, Icon
+│   ├── components/         # Navbar, Palette, Canvas, Inspector, NodeShape, EdgeShape, LibraryModal, ThemeControl, Icon
 │   ├── data/               # c4.ts, archimate.ts, togaf.ts, index.ts (catálogos e templates)
-│   ├── hooks/              # useDiagram.ts (estado, histórico undo/redo)
+│   ├── hooks/              # useDiagram.ts (estado, histórico), useTheme.ts (tema claro/escuro/auto)
 │   ├── utils/              # storage.ts, export.ts, id.ts
 │   ├── types.ts            # tipos de domínio (Diagram, EaNode, EaEdge, ElementDef...)
 │   ├── App.tsx             # composição, atalhos, tema, export
@@ -76,28 +74,13 @@ enterprise-architecture-studio/
 
 ## 🏦 Estudo de caso — Enterprise Architect (banco)
 
-A pasta [`case-arquiteto-banco/`](./case-arquiteto-banco) contém um case completo de Enterprise Architecture resolvido **dentro desta ferramenta**: uma Visão de Arquitetura (TOGAF Fase A) para um banco que precisa aumentar engajamento e acelerar lançamentos, decidindo entre os produtos *Conta de Pagamentos* e *Cashback*.
+Um case completo de Enterprise Architecture foi resolvido **com esta ferramenta**: uma Visão de Arquitetura (TOGAF Fase A) para um banco que precisa aumentar engajamento e acelerar lançamentos, decidindo entre os produtos *Conta de Pagamentos* e *Cashback*.
 
-- Documento executivo: [`00-VISAO-DE-ARQUITETURA.md`](./case-arquiteto-banco/00-VISAO-DE-ARQUITETURA.md)
-- 7 diagramas `.eas.json` prontos para importar no app (Subdomínios DDD, Mapa de Capacidades, Value Chain, Value Stream, Arquitetura Alvo em Microservices, Roadmap de Migração).
+O case vive em um **repositório próprio**, com documento executivo, os 7 diagramas `.eas.json`, prints das arquiteturas e um visualizador standalone:
 
-Para abrir: `npm run dev` → barra superior → **Importar** → selecione cada `*.eas.json`.
+➡️ **[github.com/edsinfobr/case-arquiteto-banco](https://github.com/edsinfobr/case-arquiteto-banco)**
 
-Prints das arquiteturas (em `case-arquiteto-banco/images/`):
-
-| Visão (TOGAF Fase A) | Arquitetura Alvo (Microservices · C4) |
-|---|---|
-| ![Visão de Arquitetura](./case-arquiteto-banco/images/01-visao-de-arquitetura-togaf-fase-a.svg) | ![Arquitetura Alvo](./case-arquiteto-banco/images/06-arquitetura-alvo-to-be-microservices-c4.svg) |
-
-| Subdomínios (DDD) | Value Stream |
-|---|---|
-| ![Subdomínios DDD](./case-arquiteto-banco/images/02-mapa-de-problemas-de-negocio-subdominios-ddd.svg) | ![Value Stream](./case-arquiteto-banco/images/05-value-stream-realizar-um-pagamento.svg) |
-
-Os diagramas são regeneráveis com:
-
-```bash
-node scripts/generate-case.mjs
-```
+Para reproduzir no app: baixe os `.eas.json` do repositório do case e, com `npm run dev`, use a barra superior → **Importar**.
 
 ## 🧭 Notas de escopo
 
